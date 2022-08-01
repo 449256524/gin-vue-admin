@@ -4,7 +4,7 @@
                          或标注原作者信息
                           否则将依法维权
 */
-
+return
 var child_process = require('child_process')
 
 var url = 'https://www.gin-vue-admin.com'
