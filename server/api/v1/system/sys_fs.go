@@ -10,7 +10,10 @@ type FsApi struct{}
 
 func (f *FsApi) FsLogin (c *gin.Context) {
 	var l systemReq.FsLogin
-	_ = c.ShouldBindJSON(&l)
+	if err := c.ShouldBind(&l); err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
 	orifin := l.Origin
 	code := l.Code
 	fsService.Login(orifin, code)
